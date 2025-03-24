@@ -19,7 +19,6 @@
 	},
 	"main": "./dist/index.js",
 	"scripts": {
-		"postinstall": "only-allow pnpm",
 		"prepare": "husky",
 		"prepublishOnly": "pnpm build",
 		"build": "tsup && npx fix-tsup-cjs && tsx src/utils/post-build.ts",
