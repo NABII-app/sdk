@@ -1,0 +1,15 @@
+src/
+.husky/
+node_modules/
+coverage/
+tsconfig.json
+pnpm-lock.yaml
+.prettierignore
+.prettierrc.json
+eslint.config.mjs
+.vscode/
+.env
+.env.example
+tsup.config.ts
+vitest.config.ts
+.env.example

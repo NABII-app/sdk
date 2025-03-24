@@ -1,0 +1,11 @@
+{
+	"missing_credentials": "Erreur interne du SDK : Jeton d'accès d'authentification manquant",
+	"missing_login": "Erreur interne du SDK : Vous devez être connecté pour accéder à cette méthode",
+	"missing_permission": "Erreur interne du SDK : Vous n'avez pas la permission d'accéder à cette méthode de la plateforme {platform}",
+	"invalid_language": "Erreur interne du SDK : La modification de la langue du SDK a échoué, la nouvelle valeur est incorrecte. -> « {language} »",
+	"invalid_url": "Erreur interne du SDK : La modification de l'URL du SDK a échoué, le format est incorrecte. -> « {url} »",
+	"invalid_mode": "Erreur interne du SDK : La modification du mode du SDK a échoué, la nouvelle valeur est incorrecte. -> « {mode} »",
+	"invalid_credentials": "Erreur interne du SDK : Le format des jetons d'authentification est incorrect. -> « {err} »",
+	"firebase_granted": "Erreur interne du SDK : La permission des notifications push n'est pas accordée",
+	"firebase_platform": "Erreur interne du SDK : le plugin « PushNotifications » n'est pas implémenté sur le web. Utilisez la méthode: « nabii.v1.Notification.disable() » pour désactiver le plugin."
+}

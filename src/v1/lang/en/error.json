@@ -1,0 +1,11 @@
+{
+	"missing_credentials": "Internal SDK error: Missing authentication access token",
+	"missing_login": "Internal SDK error: You should be logged to access this method",
+	"missing_permission": "Internal SDK error: You currently not have permission to access this method of the platform {platform}",
+	"invalid_language": "Internal SDK error: SDK Language modification failed, new value is incorrect. -> « {language} »",
+	"invalid_url": "Internal SDK error: Modification of the SDK URL has failed, the format is incorrect. -> « {url} »",
+	"invalid_mode": "SDK internal error: SDK mode modification failed, new value is invalid. -> « {mode} »",
+	"invalid_credentials": "Internal SDK error: The format of the authentication tokens is incorrect. -> « {err} »",
+	"firebase_granted": "Internal SDK error: Push notifications permission not granted",
+	"firebase_platform": "Internal SDK error: the « PushNotifications » plugin is not implemented on the web. Use the method: « nabii.v1.Notification.disable() » pour disable the plugin."
+}

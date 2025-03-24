@@ -1,0 +1,135 @@
+import { Platform } from "@v1/config";
+import { BaseV1 } from "@v1/base";
+import { Refresh, Logged, Permission } from "@v1/decorators";
+import type { IPaginated } from "@v1/types/nabii";
+import type {
+	I[Brick],
+	ICreate[Brick]Form,
+	IUpdate[Brick]Form,
+	I[Brick]Params,
+} from "./[brick]";
+import type { Infer } from "@dulysse1/ts-branding";
+
+/**
+ * @class {@link Admin[Brick][VERSION]}
+ * @since v[version]
+ * @extends {BaseV1}
+ */
+export class Admin[Brick][VERSION]
+	extends BaseV1
+{
+	/**
+	 * `🖥️ ADMIN 🖥️`
+	 * ### 📚 Get all {@link NabiiV1} {@link I[Brick]} 📚
+	 * @param params set request query {@link IPaginateOptions} (optional)
+	 * @example
+	 * ```tsx
+	 * import { nabii } from "nabii-sdk";
+   * 
+	 * const { data } = await nabii.v1.[Brick].Admin.getAll(); // [...]
+	 * ```
+	 * @returns a {@link IPaginated} object of {@link I[Brick]}
+	 * @since v[version]
+	 */
+	@Logged
+	@Permission(Platform.APPLICATION)
+	@Refresh
+	public getAll<TSearch extends string | undefined = undefined,
+		TLimit extends number = 15,
+		TPage extends number = 1>(
+		params?: I[Brick]Params<Platform.ADMIN, TSearch, TLimit, TPage>
+	): Promise<IPaginated<I[Brick]<Platform.ADMIN>, TSearch, TLimit, TPage>> {
+		return this._axios.get("/admin/[brick]", { params });
+	}
+	/**
+	 * `🖥️ ADMIN 🖥️`
+	 * ### 📖 Retrieve a {@link NabiiV1} {@link I[Brick]} by `primary key` 📖
+	 * @param pk the {@link I[Brick]} `primary key` you want to retrieve
+	 * @example
+	 * ```tsx
+	 * import { nabii } from "nabii-sdk";
+   * 
+	 * const [brickName] = await nabii.v1.[Brick].Admin.getByPk(pk); // {...}
+	 * ```
+	 * @returns an {@link I[Brick]} object or `null`
+	 * @since v[version]
+	 */
+	@Logged
+	@Permission(Platform.APPLICATION)
+	@Refresh
+	public getByPk(pk: Infer.PrimaryKey<I[Brick]<Platform.ADMIN>>): Promise<I[Brick]<Platform.ADMIN> | null> {
+		return this._axios.get(`/admin/[brick]/${pk}`);
+	}
+	/**
+	 * `🖥️ ADMIN 🖥️`
+	 * ### 🆕 Create a new {@link NabiiV1} {@link I[Brick]} 🆕
+	 * @param data The data required to create the [brickName]
+	 * @example
+	 * ```tsx
+	 * import { nabii } from "nabii-sdk";
+   * 
+	 * const [brickName] = await nabii.v1.[Brick].Admin.create({
+	 * 	// TODO: Add [brickName] create fields!
+	 * }); // {...}
+	 * ```
+	 * @returns the created {@link I[Brick]} object
+	 * @since v[version]
+	 */
+	@Logged
+	@Permission(Platform.APPLICATION)
+	@Refresh
+	public create(
+		data: ICreate[Brick]Form<Platform.ADMIN>
+	): Promise<I[Brick]<Platform.ADMIN>> {
+		return this._axios.post("/admin/[brick]", data);
+	}
+	/**
+	 * `🖥️ ADMIN 🖥️`
+	 * ### 🔄 Update {@link NabiiV1} {@link I[Brick]} by `primary key` 🔄
+	 * @param pk the {@link I[Brick]} `primary key` you want to update
+	 * @param data [brickName] data to update
+	 * @example
+	 * ```tsx
+	 * import { nabii } from "nabii-sdk";
+   * 
+	 * const [brickName] = await nabii.v1.[Brick].Admin.update(
+	 * 	pk,
+	 * 	{
+	 * 		// TODO: Add [brickName] update fields!
+	 * 	}
+	 * ); // {...}
+	 * ```
+	 * @returns the updated {@link I[Brick]} object
+	 * @since v[version]
+	 */
+	@Logged
+	@Permission(Platform.APPLICATION)
+	@Refresh
+	public update(
+		pk: Infer.PrimaryKey<I[Brick]<Platform.ADMIN>>,
+		data: IUpdate[Brick]Form<Platform.ADMIN>
+	): Promise<I[Brick]<Platform.ADMIN>> {
+		return this._axios.patch(`/admin/[brick]/${pk}`, data);
+	}
+	/**
+	 * `🖥️ ADMIN 🖥️`
+	 * ### 🗑️ Delete a {@link NabiiV1} {@link I[Brick]} by `primary key` 🗑️
+	 * @param pk the {@link I[Brick]} `primary key` you want to delete
+	 * @example
+	 * ```tsx
+	 * import { nabii } from "nabii-sdk";
+   * 
+	 * await nabii.v1.[Brick].Admin.delete(pk);
+	 * ```
+	 * @returns a void function
+	 * @since v[version]
+	 */
+	@Logged
+	@Permission(Platform.APPLICATION)
+	@Refresh
+	public async delete(pk: Infer.PrimaryKey<I[Brick]<Platform.ADMIN>>): Promise<void> {
+		await this._axios.delete(`/admin/[brick]/${pk}`);
+	}
+}
+
+export declare type IAdmin[Brick][VERSION] = typeof Admin[Brick][VERSION];
