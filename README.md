@@ -2,7 +2,7 @@
 
 # Nabii SDK
 
-## _Private SDK of API Nabii_
+## _SDK of API Nabii_
 
 ---
 
