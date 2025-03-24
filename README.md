@@ -48,7 +48,6 @@ Welcome to the **Nabii SDK** documentation! This SDK is designed for seamless in
 
    - Navigate to the `dist` directory.
    - If you are using an **ESM** project, copy `index.d.ts` and `index.js`.
-   - If you are using a **CommonJS** project, copy `index.d.cts` and `index.cjs`.
 
 3. **Integrate with Your Project:**
 

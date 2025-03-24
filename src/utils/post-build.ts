@@ -6,11 +6,7 @@ import nabii from "@/.";
 const keys = Object.keys(nabii);
 
 const BUILD_DIR = "dist";
-const TYPE_CJS_PATH = resolve(process.cwd(), BUILD_DIR, "index.d.cts");
-const TYPE_PATHS = [
-	resolve(process.cwd(), BUILD_DIR, "index.d.ts"),
-	TYPE_CJS_PATH,
-] as const;
+const TYPE_PATHS = [resolve(process.cwd(), BUILD_DIR, "index.d.ts")] as const;
 
 function Description(message: string) {
 	return function <

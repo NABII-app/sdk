@@ -1,6 +1,6 @@
 {
 	"name": "nabii-sdk",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Private SDK of Nabii by Ulysse Dupont",
 	"engines": {
 		"node": ">=22",
@@ -14,14 +14,14 @@
 		"./package.json": "./package.json",
 		".": {
 			"import": "./dist/index.js",
-			"default": "./dist/index.cjs"
+			"default": "./dist/index.js"
 		}
 	},
 	"main": "./dist/index.js",
 	"scripts": {
 		"prepare": "husky",
 		"prepublishOnly": "pnpm build",
-		"build": "tsup && npx fix-tsup-cjs && tsx src/utils/post-build.ts",
+		"build": "tsup && tsx src/utils/post-build.ts",
 		"lint": "npx eslint --fix . --no-cache",
 		"format": "prettier . --write",
 		"generate:model": "tsx src/utils/bricks/generate.ts",
@@ -30,7 +30,7 @@
 		"test": "vitest run --coverage",
 		"test:coverage": "tsx src/utils/coverage.ts",
 		"demo": "tsx src/demo.ts",
-		"check-exports": "attw --pack ."
+		"check-exports": "attw --pack . --ignore-rules cjs-resolves-to-esm"
 	},
 	"repository": {
 		"type": "github",
@@ -90,7 +90,6 @@
 		"eslint-plugin-import": "^2.31.0",
 		"eslint-plugin-prettier": "^5.2.4",
 		"eslint-plugin-unused-imports": "^4.1.4",
-		"fix-tsup-cjs": "^1.2.0",
 		"fs-extra": "^11.3.0",
 		"globals": "^16.0.0",
 		"husky": "^9.1.7",
