@@ -58,8 +58,11 @@ declare type ISimpleFormData<TModel = object> = IPartialNonNullable<TModel> & {
  *
  * The file can be of several types, including:
  * - A resolved `Buffer` object from the `buffer` module.
+ * - A resolved `Blob` object from the `buffer` module.
  */
-export declare type INabiiFile = IResolve<import("buffer").Buffer>;
+export declare type INabiiFile =
+	| IResolve<import("buffer").Buffer>
+	| IResolve<import("buffer").Blob>;
 
 /**
  * Improved type definition for `form-data` objects.
@@ -148,6 +151,13 @@ export async function useFormData<const T extends object>(
 					contentType,
 					filename: key,
 				});
+			} else if (value instanceof Blob) {
+				const arrayBuffer = await value.arrayBuffer();
+				const fileType = await fileTypeFromBuffer(Buffer.from(arrayBuffer));
+				const contentType = fileType
+					? fileType.mime
+					: "application/octet-stream";
+				form.append(key, value, { contentType, filename: key });
 			} else {
 				form.append(key, `${value}`);
 			}
