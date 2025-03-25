@@ -3,6 +3,7 @@ import { Logged, Permission, Refresh } from "@v1/decorators";
 import { AdminMixin, Admin } from "@v1/mixins";
 import { AdminUserV1, type IAdminUserV1 } from "./admin.user.sdk";
 import type { IUser, IUpdateUserForm, IEmailSentResult, IRoles } from "./user";
+import { useFormData } from "@/form";
 
 /**
  * @class {@link UserV1}
@@ -45,10 +46,11 @@ export class UserV1 extends AdminMixin<IAdminUserV1> {
 	@Logged
 	@Permission(Platform.APPLICATION)
 	@Refresh
-	public updateMe(
+	public async updateMe(
 		data: IUpdateUserForm<Platform.APPLICATION>,
 	): Promise<IUser<Platform.APPLICATION>> {
-		return this._axios.patch("/user", data);
+		const formData = await useFormData(data);
+		return this._axios.patch("/user", formData);
 	}
 	/**
 	 * `📱 SOCLE 📱`

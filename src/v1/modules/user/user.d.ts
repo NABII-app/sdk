@@ -137,6 +137,7 @@ export declare type IUpdateUserForm<TPlatform extends Platform> = {
 			 * - must contain a maximum of `64 characters`
 			 */
 			password?: string;
+			avatar?: INabiiFile;
 		}
 	>;
 	[Platform.ADMIN]: import("@/form").IPartialNonNullable<
