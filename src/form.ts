@@ -144,20 +144,13 @@ export async function useFormData<const T extends object>(
 		const appendToFormData = async <TValue>(key: string, value: TValue) => {
 			if (Buffer.isBuffer(value)) {
 				const fileType = await fileTypeFromBuffer(value);
-				const contentType = fileType
-					? fileType.mime
-					: "application/octet-stream";
-				form.append(key, value, {
-					contentType,
-					filename: key,
-				});
+				if (!fileType) throw new Error("Unknown extension type.");
+				form.append(key, value, `${key}.${fileType.ext}`);
 			} else if (value instanceof Blob) {
 				const arrayBuffer = await value.arrayBuffer();
 				const fileType = await fileTypeFromBuffer(Buffer.from(arrayBuffer));
-				const contentType = fileType
-					? fileType.mime
-					: "application/octet-stream";
-				form.append(key, value, { contentType, filename: key });
+				if (!fileType) throw new Error("Unknown extension type.");
+				form.append(key, value, `${key}.${fileType.ext}`);
 			} else {
 				form.append(key, `${value}`);
 			}
