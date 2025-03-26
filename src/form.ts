@@ -58,11 +58,11 @@ declare type ISimpleFormData<TModel = object> = IPartialNonNullable<TModel> & {
  *
  * The file can be of several types, including:
  * - A resolved `Buffer` object from the `buffer` module.
- * - A resolved `Blob` object from the `buffer` module.
+ * - A resolved `Blob` object from the `global` module.
  */
 export declare type INabiiFile =
 	| IResolve<import("buffer").Buffer>
-	| IResolve<import("buffer").Blob>;
+	| IResolve<Blob>;
 
 /**
  * Improved type definition for `form-data` objects.
@@ -182,7 +182,12 @@ export async function useFormData<const T extends object>(
 				name: error.name,
 			});
 		} else {
-			throw error;
+			throw new NabiiError({
+				message: `${error}`,
+				isAxiosError: false,
+				toJSON: () => ({}),
+				name: "Internal Error",
+			});
 		}
 	}
 }
