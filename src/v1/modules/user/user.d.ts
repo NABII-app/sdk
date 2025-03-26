@@ -200,7 +200,7 @@ export declare interface IUserUpdatedResult
  * @since v1.0.0
  */
 export declare interface IEmailSentResult
-	extends Pick<IUser<Platform>, "id" | "email"> {
+	extends Pick<IUser<Platform>, "email"> {
 	/**
 	 * A boolean indicating that the email has been successfully sent.
 	 *

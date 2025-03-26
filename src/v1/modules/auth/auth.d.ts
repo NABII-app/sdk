@@ -64,6 +64,7 @@ export declare type IStrategyName = "google" | "facebook" | "apple";
 /**
  * ####  ✨ List of {@link NabiiV1} authentication module types ✨:
  * - {@link IEmailSubject}
+ * - {@link IStrategyName}
  * ---------------------------
  * Do you have ideas or recommendations for improvement?
  *  * @author Ulysse Dupont -->
@@ -74,4 +75,5 @@ export declare type IStrategyName = "google" | "facebook" | "apple";
  */
 export declare namespace IAuthTypes {
 	export { IEmailSubject };
+	export { IStrategyName };
 }
