@@ -75,7 +75,7 @@ export class AuthV1 extends BaseV1 {
 			"password",
 			"firstName",
 			"lastName",
-			"password",
+			"avatar",
 		]);
 		return this._axios.post("/user", formData);
 	}

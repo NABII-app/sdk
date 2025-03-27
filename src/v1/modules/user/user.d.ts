@@ -111,16 +111,12 @@ export declare type IUser<TPlatform extends Platform> = {
 export declare type ICreateUserForm<TPlatform extends Platform> = {
 	[Platform.APPLICATION]: Pick<
 		IUser<TPlatform>,
-		"firstName" | "lastName" | "email" | "password"
-	> & {
-		avatar?: INabiiFile;
-	};
-	[Platform.ADMIN]: Pick<
-		IUser<TPlatform>,
 		"firstName" | "lastName" | "email"
-	> & {
-		avatar?: INabiiFile;
-	};
+	> &
+		Partial<IAvatarSchema> &
+		Partial<IPasswordSchema>;
+	[Platform.ADMIN]: Pick<IUser<TPlatform>, "firstName" | "lastName" | "email"> &
+		Partial<IAvatarSchema>;
 }[TPlatform];
 
 /**
@@ -130,20 +126,37 @@ export declare type ICreateUserForm<TPlatform extends Platform> = {
  */
 export declare type IUpdateUserForm<TPlatform extends Platform> = {
 	[Platform.APPLICATION]: import("@/form").IPartialNonNullable<
-		Pick<IUser<TPlatform>, "firstName" | "lastName"> & {
-			/**
-			 * The `password` of the user
-			 * - must contain at least `8 characters`
-			 * - must contain a maximum of `64 characters`
-			 */
-			password?: string;
-			avatar?: INabiiFile;
-		}
+		Pick<IUser<TPlatform>, "firstName" | "lastName"> &
+			Partial<IAvatarSchema> &
+			Partial<IPasswordSchema>
 	>;
 	[Platform.ADMIN]: import("@/form").IPartialNonNullable<
 		ICreateUserForm<TPlatform>
 	>;
 }[TPlatform];
+
+/**
+ * password object type definition for forms
+ */
+export interface IPasswordSchema {
+	/**
+	 * The `password` of the user account
+	 * @rules Here the password rules:
+	 * - must contain at least `8 characters`
+	 * - must contain a maximum of `64 characters`
+	 */
+	password: string;
+}
+
+/**
+ * avatar object type definition for forms
+ */
+export interface IAvatarSchema {
+	/**
+	 * the avatar as buffer {@link INabiiFile} type
+	 */
+	avatar: INabiiFile;
+}
 
 /**
  * User {@link NabiiV1} model `GET` field parameters type
@@ -308,6 +321,8 @@ export declare interface IBulkCreateResult {
  * - {@link IRole}
  * - {@link IDeletedUser}
  * - {@link IBulkCreateResult}
+ * - {@link IPasswordSchema}
+ * - {@link IAvatarSchema}
  * ---------------------------
  * Do you have ideas or recommendations for improvement?
  *  * @author Ulysse Dupont -->
@@ -327,4 +342,6 @@ export declare namespace IUserTypes {
 	export { IRole };
 	export { IDeletedUser };
 	export { IBulkCreateResult };
+	export { IPasswordSchema };
+	export { IAvatarSchema };
 }
