@@ -1,6 +1,6 @@
 {
 	"name": "nabii-sdk",
-	"version": "1.0.7",
+	"version": "1.0.8",
 	"description": "Private SDK of Nabii by Ulysse Dupont",
 	"engines": {
 		"node": ">=22",
@@ -78,7 +78,7 @@
 		"@faker-js/faker": "^9.6.0",
 		"@types/fs-extra": "^11.0.4",
 		"@types/imap": "^0.8.42",
-		"@types/node": "^22.13.13",
+		"@types/node": "^22.13.14",
 		"@types/prompts": "^2.4.9",
 		"@types/request": "^2.48.12",
 		"@typescript-eslint/eslint-plugin": "^8.28.0",

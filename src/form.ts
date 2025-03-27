@@ -135,6 +135,7 @@ export declare type ISafeForm<T = object> = Op.Satisfy<
  */
 export async function useFormData<const T extends object>(
 	data: IRequireFile<T>,
+	propertyGuard?: (keyof T)[],
 ): Promise<IFormData<T>> {
 	try {
 		if (typeof data !== "object") {
@@ -156,6 +157,9 @@ export async function useFormData<const T extends object>(
 			}
 		};
 		for (const [key, value] of Object.entries(data)) {
+			if (!value || (propertyGuard && !propertyGuard.some(p => p === key))) {
+				continue;
+			}
 			if (Array.isArray(value)) {
 				for (let i = 0; i < value.length; i++) {
 					await appendToFormData(`${key}[${i}]`, value[i]);

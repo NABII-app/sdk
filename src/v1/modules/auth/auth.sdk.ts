@@ -70,7 +70,13 @@ export class AuthV1 extends BaseV1 {
 	public async register(
 		data: ICreateUserForm<Platform.APPLICATION>,
 	): Promise<IUser<Platform.APPLICATION>> {
-		const formData = await useFormData(data);
+		const formData = await useFormData(data, [
+			"email",
+			"password",
+			"firstName",
+			"lastName",
+			"password",
+		]);
 		return this._axios.post("/user", formData);
 	}
 	/**

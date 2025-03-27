@@ -113,7 +113,12 @@ export class AdminUserV1 extends BaseV1 {
 	public async create(
 		data: ICreateUserForm<Platform.ADMIN>,
 	): Promise<IUser<Platform.ADMIN>> {
-		const formData = await useFormData(data);
+		const formData = await useFormData(data, [
+			"avatar",
+			"email",
+			"firstName",
+			"lastName",
+		]);
 		return this._axios.post("/admin/user", formData);
 	}
 	/**
@@ -142,7 +147,12 @@ export class AdminUserV1 extends BaseV1 {
 		pk: Infer.PrimaryKey<IUser<Platform.ADMIN>>,
 		data: IUpdateUserForm<Platform.ADMIN>,
 	): Promise<IUser<Platform.ADMIN>> {
-		const formData = await useFormData(data);
+		const formData = await useFormData(data, [
+			"avatar",
+			"email",
+			"firstName",
+			"lastName",
+		]);
 		return this._axios.patch(`/admin/user/${pk}`, formData);
 	}
 	/**

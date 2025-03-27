@@ -49,7 +49,12 @@ export class UserV1 extends AdminMixin<IAdminUserV1> {
 	public async updateMe(
 		data: IUpdateUserForm<Platform.APPLICATION>,
 	): Promise<IUser<Platform.APPLICATION>> {
-		const formData = await useFormData(data);
+		const formData = await useFormData(data, [
+			"avatar",
+			"firstName",
+			"lastName",
+			"password",
+		]);
 		return this._axios.patch("/user", formData);
 	}
 	/**
