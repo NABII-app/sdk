@@ -82,6 +82,23 @@ export class AuthV1 extends BaseV1 {
 	/**
 	 * @public
 	 * `📱 SOCLE 📱`
+	 * ### ♻️ Callback email creation to get another email sent ♻️
+	 * @param email your email address to receive an email
+	 * @example
+	 * ```ts
+	 * await nabii.v1.Auth.callbackActivateAccount("email@domain.com"); // {...}
+	 * ```
+	 * @returns the object result of email receive
+	 * @since v1.0.12
+	 */
+	public callbackActivateAccount(email: string): Promise<IEmailSentResult> {
+		return this._axios.post("/auth/activate-account/callback", {
+			email,
+		});
+	}
+	/**
+	 * @public
+	 * `📱 SOCLE 📱`
 	 * ####  🔐 Login to {@link NabiiV1} 🔐
 	 * *ℹ If you are already logged in from storage, use the {@link AuthV1.setCredentials} method instead. ℹ*
 	 * @param email Your {@link NabiiV1} email address
