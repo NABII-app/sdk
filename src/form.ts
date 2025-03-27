@@ -15,7 +15,9 @@ declare const formErrorBrand: unique symbol;
  */
 export declare type IPartialNonNullable<T> = {
 	[Key in keyof T]?: T[Key] extends object
-		? IPartialNonNullable<T[Key]>
+		? T[Key] extends INabiiFile
+			? NonNullable<T[Key]>
+			: IPartialNonNullable<T[Key]>
 		: NonNullable<T[Key]>;
 };
 

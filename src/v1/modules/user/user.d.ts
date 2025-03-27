@@ -114,7 +114,7 @@ export declare type ICreateUserForm<TPlatform extends Platform> = {
 		"firstName" | "lastName" | "email"
 	> &
 		Partial<IAvatarSchema> &
-		Partial<IPasswordSchema>;
+		IPasswordSchema;
 	[Platform.ADMIN]: Pick<IUser<TPlatform>, "firstName" | "lastName" | "email"> &
 		Partial<IAvatarSchema>;
 }[TPlatform];
@@ -127,8 +127,8 @@ export declare type ICreateUserForm<TPlatform extends Platform> = {
 export declare type IUpdateUserForm<TPlatform extends Platform> = {
 	[Platform.APPLICATION]: import("@/form").IPartialNonNullable<
 		Pick<IUser<TPlatform>, "firstName" | "lastName"> &
-			Partial<IAvatarSchema> &
-			Partial<IPasswordSchema>
+			IAvatarSchema &
+			IPasswordSchema
 	>;
 	[Platform.ADMIN]: import("@/form").IPartialNonNullable<
 		ICreateUserForm<TPlatform>
