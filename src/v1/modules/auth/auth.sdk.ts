@@ -11,6 +11,7 @@ import type {
 	ILogged,
 	IIsLogged,
 	IStrategyName,
+	ICheckTokenResponseType,
 } from "./auth";
 import type {
 	ICredentials,
@@ -311,15 +312,15 @@ export class AuthV1 extends BaseV1 {
 	 * // "/auth/reset-password?token={TOKEN}";
 	 * const { query } = useRouter();
 	 * const { token } = query;
-	 * const isValidToken = await nabii.v1.Auth.checkTokenValidity(token, "forgotPassword"); // true | false
+	 * const {tokenIsValid} = await nabii.v1.Auth.checkTokenValidity(token, "forgotPassword"); // true | false
 	 * ```
-	 * @returns a boolean at true if the token is valid
+	 * @returns the {@link ICheckTokenResponseType} object representing the token validity and user information.
 	 * @since v1.0.0
 	 */
 	public checkTokenValidity(
 		token: string,
 		subject: IEmailSubject,
-	): Promise<boolean> {
+	): Promise<ICheckTokenResponseType> {
 		return this._axios.get(
 			`/auth/check-token?token=${token}&subject=${subject}`,
 		);

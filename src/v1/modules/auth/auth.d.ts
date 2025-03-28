@@ -1,3 +1,6 @@
+import type { Platform } from "@/v1/config";
+import type { IUser } from "@v1/modules/user/user";
+
 export type {
 	IUser,
 	IEmailSentResult,
@@ -23,6 +26,36 @@ export declare type IEmailSubject =
 	| "forgotPassword"
 	| "activateAccount"
 	| "activateAccountInvite";
+
+/**
+ * This type represents the response type of a check token request.
+ *
+ * @since v1.0.13
+ */
+export declare type ICheckTokenResponseType =
+	| {
+			/**
+			 * the token is not valid...
+			 */
+			tokenIsValid: false;
+			/**
+			 * ...so the user response is `null`
+			 */
+			user: null;
+	  }
+	| {
+			/**
+			 * the token is valid...
+			 */
+			tokenIsValid: true;
+			/**
+			 * ...so the user object contain the user important information
+			 */
+			user: Pick<
+				IUser<Platform.APPLICATION>,
+				"firstName" | "lastName" | "email"
+			>;
+	  };
 
 /**
  * A unique symbol used to brand instances as `Logged`.

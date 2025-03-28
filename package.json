@@ -1,6 +1,6 @@
 {
 	"name": "nabii-sdk",
-	"version": "1.0.12",
+	"version": "1.0.13",
 	"description": "Private SDK of Nabii by Ulysse Dupont",
 	"engines": {
 		"node": ">=22",
