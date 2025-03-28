@@ -149,8 +149,8 @@ export abstract class BaseV1 {
 			this._config.isLogged = false;
 			this._config.socket.off();
 			await this._disconnectSocket();
-			await this._triggerEventListener("logout");
 		}
+		await this._triggerEventListener("logout");
 	}
 	protected async _setCredentials(
 		credentials: Partial<ICredentials>,

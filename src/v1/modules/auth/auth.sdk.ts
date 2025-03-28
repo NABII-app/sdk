@@ -278,8 +278,6 @@ export class AuthV1 extends BaseV1 {
 	 * @returns a void function
 	 * @since v1.0.0
 	 */
-	@Logged
-	@Permission(Platform.APPLICATION)
 	public logout(): Promise<void> {
 		return this._logout();
 	}
