@@ -129,11 +129,6 @@ export abstract class BaseV1 {
 						this._updateSocketConnection(),
 						this._triggerEventListener("refresh", this._config.credentials),
 					]).then(() => resolve(credentials));
-				})
-				.catch(err => {
-					this._logout().then(() =>
-						reject(err instanceof Error ? err : new Error(`${err}`)),
-					);
 				});
 		});
 	}
