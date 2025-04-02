@@ -129,7 +129,8 @@ export abstract class BaseV1 {
 						this._updateSocketConnection(),
 						this._triggerEventListener("refresh", this._config.credentials),
 					]).then(() => resolve(credentials));
-				});
+				})
+				.catch(reject);
 		});
 	}
 	protected async _logout(): Promise<void> {
