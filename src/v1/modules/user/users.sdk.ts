@@ -102,6 +102,7 @@ export class UserV1 extends AdminMixin<IAdminUserV1> {
 	@Logged
 	@Refresh
 	public checkPassword(password: string): Promise<boolean> {
+		if (!password) return Promise.resolve(false);
 		return this._axios.get(`/user/check-password/${password}`);
 	}
 	/**
