@@ -33,6 +33,7 @@ export const credentialSchema = z.object({
 		firstName: z.string(),
 		lastName: z.string(),
 		avatar: z.string().url(),
+		strategy: z.nativeEnum(configV1.strategies),
 		email: z.string().trim().email(),
 		role: z.nativeEnum({ ...configV1.roles }),
 		firebaseToken: z.string().trim().nullable(),

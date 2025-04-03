@@ -36,7 +36,7 @@ export const modulesV1 = <const>{
 	Notification: NotificationV1,
 	/**
 	 * 📦 {@link VersionV1} module 📦
-	 * @since v1.4.0
+	 * @since v1.0.0
 	 */
 	Version: VersionV1,
 };

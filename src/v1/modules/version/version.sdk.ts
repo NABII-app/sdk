@@ -6,7 +6,7 @@ import type { ICheckVersionResult, IVersionTypes } from "./version";
 
 /**
  * @class {@link VersionV1}
- * @since v1.4.0
+ * @since v1.0.0
  * @extends {BaseV1}
  */
 @Admin(AdminVersionV1)
@@ -39,7 +39,7 @@ export class VersionV1 extends AdminMixin<IAdminVersionV1> {
 	 * const { current, latest, isLatest } = await nabii.v1.Version.check("1.3.0");
 	 * ```
 	 * @returns the {@link ICheckVersionResult} check object
-	 * @since v1.4.0
+	 * @since v1.0.0
 	 */
 	@Logged
 	@Permission(Platform.APPLICATION)

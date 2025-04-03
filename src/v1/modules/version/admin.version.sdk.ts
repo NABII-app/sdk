@@ -7,7 +7,7 @@ import type { Infer } from "@dulysse1/ts-branding";
 
 /**
  * @class {@link AdminVersionV1}
- * @since v1.4.0
+ * @since v1.0.0
  * @extends {BaseV1}
  */
 export class AdminVersionV1 extends BaseV1 {
@@ -22,7 +22,7 @@ export class AdminVersionV1 extends BaseV1 {
 	 * const { data } = await nabii.v1.Version.Admin.getAll(); // [...]
 	 * ```
 	 * @returns a {@link IPaginated} object of {@link IVersion}
-	 * @since v1.4.0
+	 * @since v1.0.0
 	 */
 	@Logged
 	@Permission(Platform.APPLICATION)
@@ -47,7 +47,7 @@ export class AdminVersionV1 extends BaseV1 {
 	 * const version = await nabii.v1.Version.Admin.getByPk(pk); // {...}
 	 * ```
 	 * @returns an {@link IVersion} object or `null`
-	 * @since v1.4.0
+	 * @since v1.0.0
 	 */
 	@Logged
 	@Permission(Platform.APPLICATION)
@@ -71,7 +71,7 @@ export class AdminVersionV1 extends BaseV1 {
 	 * }); // {...}
 	 * ```
 	 * @returns the created {@link IVersion} object
-	 * @since v1.4.0
+	 * @since v1.0.0
 	 */
 	@Logged
 	@Permission(Platform.APPLICATION)

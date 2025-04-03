@@ -1,4 +1,4 @@
-import { Platform } from "@v1/config";
+import { configV1, Platform } from "@v1/config";
 import { BaseV1 } from "@v1/base";
 import { Refresh, Permission, Logged } from "@v1/decorators";
 import { credentialSchema } from "@v1/schemas";
@@ -12,6 +12,7 @@ import type {
 	IIsLogged,
 	IStrategyName,
 	ICheckTokenResponseType,
+	IStrategies,
 } from "./auth";
 import type {
 	ICredentials,
@@ -44,10 +45,21 @@ export class AuthV1 extends BaseV1 {
 	 * - `facebook` *(not implemented)* : the strategy used to authenticate with [Facebook SSO](https://developers.facebook.com/).
 	 * - `apple` *(not implemented)* : the strategy used to authenticate with [Apple SSO](https://developer.apple.com/account/).
 	 * @returns the server URL to handle SSO login request
-	 * @since v1.5.0
+	 * @since v1.0.10
 	 */
 	public strategy(name: IStrategyName): string {
 		return `${this._config.url}/auth/${name}`;
+	}
+	/**
+	 * The list of strategies used to authenticate users.
+	 * - `google` *(implemented)* : the strategy used to authenticate with [Google SSO](https://console.developers.google.com/).
+	 * - `facebook` *(not implemented)* : the strategy used to authenticate with [Facebook SSO](https://developers.facebook.com/).
+	 * - `apple` *(not implemented)* : the strategy used to authenticate with [Apple SSO](https://developer.apple.com/account/).
+	 * @returns the server URL to handle SSO login request
+	 * @since v1.0.19
+	 */
+	public get strategies(): IStrategies {
+		return configV1.strategies;
 	}
 	/**
 	 * @public

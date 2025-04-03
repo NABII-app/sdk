@@ -31,6 +31,10 @@ export declare type IUser<TPlatform extends Platform> = {
 		 */
 		email: string;
 		/**
+		 * The trategy names used to authenticate users with `SSO` or `local`.
+		 */
+		strategy: import("@/v1/modules/auth/auth").IStrategy;
+		/**
 		 * The `role` of the user with one value from {@link IRoles}
 		 * - *To get the values, use `nabii.v1.User.roles`.*
 		 */
@@ -66,6 +70,10 @@ export declare type IUser<TPlatform extends Platform> = {
 		 * @expiredIn 30mn
 		 */
 		avatar: string;
+		/**
+		 * The trategy names used to authenticate users with `SSO` or `local`.
+		 */
+		strategy: import("@/v1/modules/auth/auth").IStrategy;
 		/**
 		 * The `email` of the user
 		 * @unique

@@ -3,7 +3,7 @@ import type { Brand } from "@dulysse1/ts-branding";
 /**
  * `Version` {@link NabiiV1} model type
  * @template TPlatform the platform currently in use
- * @since v1.4.0
+ * @since v1.0.0
  */
 export declare type IVersion<TPlatform extends Platform> = {
 	[Platform.APPLICATION]: {
@@ -72,7 +72,7 @@ export declare type IVersion<TPlatform extends Platform> = {
 
 /**
  * `Version` {@link NabiiV1} check object type
- * @since v1.4.0
+ * @since v1.0.0
  */
 export declare type ICheckVersionResult = {
 	/**
@@ -95,7 +95,7 @@ export declare type ICheckVersionResult = {
  * *This interface defines the various types a version can have in the system.
  * Each type is associated with a specific string value.*
  *
- * @since v1.4.0
+ * @since v1.0.0
  */
 export declare interface IVersionTypes {
 	/**
@@ -126,14 +126,14 @@ export declare interface IVersionTypes {
  *
  * *This type represents the possible type values for versions.*
  *
- * @since v1.4.0
+ * @since v1.0.0
  */
 export declare type IVersionType = IVersionTypes[keyof IVersionTypes];
 
 /**
  * `Version` {@link NabiiV1} model creation fields type
  * @template TPlatform the platform currently in use
- * @since v1.4.0
+ * @since v1.0.0
  */
 export declare type ICreateVersionForm<TPlatform extends Platform> = {
 	[Platform.APPLICATION]: never;
@@ -146,7 +146,7 @@ export declare type ICreateVersionForm<TPlatform extends Platform> = {
  * @template TSearch the generic request `search` value (optional)
  * @template TLimit the generic request `limit` value (optional)
  * @template TPage the generic request `page` value (optional)
- * @since v1.4.0
+ * @since v1.0.0
  */
 export declare type IVersionParams<
 	TPlatform extends Platform,
@@ -174,7 +174,7 @@ export declare type IVersionParams<
  *  [Email](mailto:ulyssedupont2707@gmail.com)
  *  | [Github](https://github.com/Dulysse)
  *  | [LinkedIn](https://www.linkedin.com/in/ulysse-dupont)
- * @since v1.4.0
+ * @since v1.0.0
  */
 export declare namespace IVersionTypes {
 	export { IVersion };

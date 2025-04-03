@@ -89,15 +89,48 @@ export declare type IIsLogged<T> = import("@v1/types/utils").IIsBranded<
 /**
  * The list of strategy names used to authenticate users with SSO.
  * - `google` *(implemented)* : the strategy used to authenticate with [Google SSO](https://console.developers.google.com/).
- * - `facebook` *(implemented)* : the strategy used to authenticate with [Facebook SSO](https://developers.facebook.com/).
+ * - `facebook` *(not implemented)* : the strategy used to authenticate with [Facebook SSO](https://developers.facebook.com/).
  * - `apple` *(not implemented)* : the strategy used to authenticate with [Apple SSO](https://developer.apple.com/account/).
  */
-export declare type IStrategyName = "google" | "facebook" | "apple";
+export declare type IStrategyName = Exclude<
+	IStrategies,
+	"local" | "apple"
+>[keyof Exclude<IStrategies, "local" | "apple">];
+
+/**
+ * The list of strategies used to authenticate users.
+ */
+export declare type IStrategies = {
+	/**
+	 * The default strategy. when you create your account with a password authentication
+	 * @default
+	 */
+	LOCAL: "local"; // skip local
+	/**
+	 * - `google` *(implemented)* : the strategy used to authenticate with [Google SSO](https://console.developers.google.com/).
+	 */
+	GOOGLE: "google";
+	/**
+	 * - `facebook` *(not implemented)* : the strategy used to authenticate with [Facebook SSO](https://developers.facebook.com/).
+	 */
+	FACEBOOK: "facebook";
+	/**
+	 * - `apple` *(not implemented)* : the strategy used to authenticate with [Apple SSO](https://developer.apple.com/account/).
+	 */
+	APPLE: "apple"; // not implemented
+};
+
+/**
+ * The list of strategy names used to authenticate users.
+ */
+export declare type IStrategy = IStrategies[keyof IStrategies];
 
 /**
  * ####  ✨ List of {@link NabiiV1} authentication module types ✨:
  * - {@link IEmailSubject}
  * - {@link IStrategyName}
+ * - {@link IStrategy}
+ * - {@link IStrategies}
  * - {@link ICheckTokenResponseType}
  * ---------------------------
  * Do you have ideas or recommendations for improvement?
@@ -110,5 +143,7 @@ export declare type IStrategyName = "google" | "facebook" | "apple";
 export declare namespace IAuthTypes {
 	export { IEmailSubject };
 	export { IStrategyName };
+	export { IStrategy };
+	export { IStrategies };
 	export { ICheckTokenResponseType };
 }

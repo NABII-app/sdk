@@ -7,6 +7,7 @@ import type {
 	IMode,
 } from "@v1/types/nabii";
 import type { IRoles } from "@v1/modules/user/user";
+import type { IStrategies } from "@/v1/modules/auth/auth";
 
 /**
  * ####  List of {@link NabiiV1} platforms
@@ -56,6 +57,14 @@ class ConfigV1 {
 			USER: 100,
 			SUPERVISOR: 150,
 			ADMIN: 200,
+		};
+	}
+	public get strategies(): IStrategies {
+		return {
+			LOCAL: "local",
+			GOOGLE: "google",
+			FACEBOOK: "facebook",
+			APPLE: "apple",
 		};
 	}
 }
